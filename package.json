@@ -8,12 +8,13 @@
     "start": "node app.js"
   },
   "engines": {
-    "node": "16.13.1"
+    "node": "16.18"
   },
   "keywords": [],
   "author": "Matt Thurmond",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.1342.0",
     "bcrypt": "^5.0.1",
     "body-parser": "^1.20.0",
     "connect-session-sequelize": "^7.1.4",

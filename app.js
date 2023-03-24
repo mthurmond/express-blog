@@ -7,9 +7,7 @@ const app = express();
 let port = process.env.PORT || 3000;
 
 app.use(bodyParser.urlencoded({ extended: false })); 
-
-app.use('/static', express.static('public')); 
-
+app.use('/static', express.static('public'));
 app.set('view engine', 'pug'); 
 
 // route all production http requests to https
