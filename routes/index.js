@@ -1,4 +1,6 @@
-const express = require('express'); 
+require('dotenv').config()
+const express = require('express')
+const s3trix = require('./s3trix')
 const router = express.Router(); 
 const rateLimit = require('express-rate-limit');
 
@@ -137,6 +139,19 @@ router.get('/logout', function(req, res, next) {
     req.session.destroy();
     return res.redirect('/'); 
 });  
+
+router.get('/getsignedurltrix', loginCheck, async (req, res, next) => {
+    try {
+        const url = await s3trix.generateUploadURL(req.query.key)
+        console.log(url)
+        res.send({url})
+    }
+    catch (err) {
+        err.message = 'Unable to upload photo.'
+        err.status = 500;
+        next(err);
+    }
+})
 
 // GET /new
 router.get('/new', loginCheck, (req, res) => {
