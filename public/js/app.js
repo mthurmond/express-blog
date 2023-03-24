@@ -20,7 +20,6 @@
     // get signed URL from app server
     const signedUrl = await fetch(`/getsignedurltrix?key=${key}`).then(res => res.json()).then(data => data.url)
     // upload photo to s3 using fetch
-    console.log(signedUrl)
     await fetch(signedUrl, {
       method: 'PUT',
       headers: {

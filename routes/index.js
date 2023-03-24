@@ -143,7 +143,6 @@ router.get('/logout', function(req, res, next) {
 router.get('/getsignedurltrix', loginCheck, async (req, res, next) => {
     try {
         const url = await s3trix.generateUploadURL(req.query.key)
-        console.log(url)
         res.send({url})
     }
     catch (err) {
